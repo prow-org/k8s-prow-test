@@ -7,7 +7,7 @@ branch_spec: &branch_spec
 # Presubmit jobs
 presubmits:
   prow-org/k8s-prow-test:
-  - name: pull-job
+  - name: test-pull-job
     always_run: true
     decorate: true
     spec:
