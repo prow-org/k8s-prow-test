@@ -1,5 +1,5 @@
-PROJECT ?= shekhawatsanjay
-IMAGE ?= prow-golang-builder
+PROJECT ?= vadar
+IMAGE ?= spring3
 
 VERSION ?= $(shell date +v%Y%m%d)-$(shell git describe --tags --always --dirty)
 

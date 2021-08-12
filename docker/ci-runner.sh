@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROOT_PATH="/workspace/src/github.com/sanster23/k8s-prow-guide/"
+ROOT_PATH="/workspace/src/github.com/prow-org/k8s-prow-test/"
 
 # function start_docker(){
 #     echo "Docker in Docker enabled, initializing..."

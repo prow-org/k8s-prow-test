@@ -1,0 +1,20 @@
+job_labels_template: &job_labels_template
+  preset-dind-enabled: "true"
+
+branch_spec: &branch_spec
+- "^master$"
+
+# Presubmit jobs
+presubmits:
+  prow-org/k8s-prow-test:
+  - name: pull-job
+    always_run: true
+    decorate: true
+    spec:
+      containers:
+      - image: vadar/spring3:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - "make"
+        args:
+        - "push"

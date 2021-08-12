@@ -1,11 +1,7 @@
-# Basic setup for Prow jobs
 
 FROM debian:stretch
 
-ENV GO_VERSION=1.12.5 \
-    DOCKER_VERSION=18.06.1* \
-    GOLANGCI_VERSION="v1.16.0"
-
+ENV DOCKER_VERSION=18.06.1* 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
@@ -40,22 +36,7 @@ RUN echo 'DOCKER_OPTS="${DOCKER_OPTS} --data-root=/docker-graph"' | \
 RUN mkdir /docker-graph
 
 
-# Install Go
-RUN wget -q https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
-    tar xzf go${GO_VERSION}.linux-amd64.tar.gz && \
-    rm go${GO_VERSION}.linux-amd64.tar.gz && \
-    mv go /usr/local
-
-ENV GOPATH /home/prow/go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-RUN mkdir -p ${GOPATH}/bin && \
-    mkdir -p ${GOPATH}/src
-
-# Install GolangCi-lint
-RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b "$GOPATH"/bin "$GOLANGCI_VERSION"
-
-# Install go cover tool
-RUN go get golang.org/x/tools/cmd/cover
+# run
 
 COPY ci-runner.sh /ci-runner.sh
 RUN chmod +x /ci-runner.sh
