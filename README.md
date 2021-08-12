@@ -67,25 +67,20 @@ enforcement, chat-ops via `/foo` style commands, and automatic PR merging.
 
     `echo "PUT_TOKEN_HERE" > oauth`
 
-    `kubectl create secret generic oauth --from-file=oauth=oauth`
-
 3. Create an openssl token to be used with the Hook.
 
     `openssl rand -hex 20 > hmac`
 
-    `kubectl create secret generic hmac --from-file=hmac=hmac`
-
 4. Create all the Prow components.
 
-    `kubectl create -f prow_starter.yaml`
+    `kubectl create -f prow/starter-s3.yaml`
 
 5. Update all the jobs and plugins needed for the CI (rules mentioned in the [Makefile](https://github.com/sanster23/k8s-prow-guide/blob/master/Makefile)).
     Use commands:
 
     ```bash
-    make update-config
 
-    make update-plugins
+    make update-jobs
     ```
 
 6. For creating a webhook in github repo and pointing it to the local machine use Ultrahook.
@@ -106,7 +101,3 @@ enforcement, chat-ops via `/foo` style commands, and automatic PR merging.
 
    `kubectl create secret generic gcs-sa --from-file=service-account.json=service-account.json`
 
-   ```
-TESTING
-
-   ```
