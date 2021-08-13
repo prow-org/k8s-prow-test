@@ -1,0 +1,18 @@
+postsubmits:
+  prow-org/k8s-prow-test::
+  - name: test-postsubmit
+    decorate: false
+    spec:
+      containers:
+      - image: alpine
+        command: ["/bin/printenv"]
+presubmits:
+  prow-org/k8s-prow-test::
+  - name: test-presubmit
+    decorate: false
+    always_run: true
+    skip_report: true
+    spec:
+      containers:
+      - image: alpine
+        command: ["/bin/printenv"]

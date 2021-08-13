@@ -35,3 +35,5 @@ RUN apt-get update && \
 RUN echo 'DOCKER_OPTS="${DOCKER_OPTS} --data-root=/docker-graph"' | \
     tee --append /etc/default/docker
 RUN mkdir /docker-graph
+COPY . /etc/mymaven
+WORKDIR /etc/mymaven
