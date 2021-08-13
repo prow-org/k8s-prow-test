@@ -1,5 +1,5 @@
 PROJECT ?= vadar
-IMAGE ?= spring3
+IMAGE ?= maven
 
 VERSION ?= $(shell date +v%Y%m%d)-$(shell git describe --tags --always --dirty)
 
@@ -13,5 +13,6 @@ push:
 	docker push docker.io/$(PROJECT)/$(IMAGE):latest
 	docker push docker.io/$(PROJECT)/$(IMAGE):$(VERSION)
 
+pull-push: image push
 
 .PHONY: image push

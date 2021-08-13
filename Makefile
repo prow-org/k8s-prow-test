@@ -1,24 +1,20 @@
-
-GO_APP_BINARY ?= main
-
-DOCKER_REPO ?= shekhawatsanjay
-IMAGE ?= go-hello-world
+DOCKER_REPO ?= vadar
+IMAGE ?= spring3
 VERSION ?= $(shell date +v%Y%m%d)-$(shell git describe --tags --always --dirty)
 
 all: test build
 
 clean:		## Clear all the .pyc/.pyo files and virtual env files.
-	go clean
-	rm -f $(GO_APP_BINARY)
+   mvn clean
 
 test:
-	go test -v -race -cover ./...
+	mvn test
 
 build:
-	go build -v hello.go
+	mvn build
 
-run: build
-	./$(GO_APP_BINARY)
+run: 
+   mvn clean package
 
 build-image:
 	docker build --cache-from docker.io/$(DOCKER_REPO)/$(IMAGE):latest \
