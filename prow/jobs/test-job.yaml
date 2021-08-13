@@ -10,7 +10,7 @@ presubmits:
   - name: pull-job
     always_run: true
     branches: *branch_spec
-    decorate: true
+    decorate: false
     spec:
       containers:
       - image: vadar/maven:latest
