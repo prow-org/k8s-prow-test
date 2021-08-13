@@ -2,7 +2,7 @@
 
 # Sample job: This will echo `date` after every 10 minute interval via a k8s pod.
 periodics:
-- interval: 1h
+- interval: 15m
   agent: kubernetes
   name: echo-test-cli
   spec:

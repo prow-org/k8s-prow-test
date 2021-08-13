@@ -12,9 +12,9 @@ presubmits:
     decorate: true
     spec:
       containers:
-      - image: vadar/spring3:latest
+      - image: vadar/maven:latest
         imagePullPolicy: IfNotPresent
         command:
         - "make"
         args:
-        - "push"
+        - "ci-release"

@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     shellcheck \
     software-properties-common \
     lsb-release \
+    maven \
     && apt-get clean
 
 # Docker-in-docker
@@ -34,9 +35,3 @@ RUN apt-get update && \
 RUN echo 'DOCKER_OPTS="${DOCKER_OPTS} --data-root=/docker-graph"' | \
     tee --append /etc/default/docker
 RUN mkdir /docker-graph
-
-
-# run
-
-COPY ci-runner.sh /ci-runner.sh
-RUN chmod +x /ci-runner.sh
